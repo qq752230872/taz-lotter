@@ -12,6 +12,8 @@
 
 <script>
 import LuckDraw from '../base/lotter/BaseLotter.vue'
+import axios from 'axios'
+
 export default {
   name: 'MyLotter',
   components: {
@@ -35,6 +37,23 @@ export default {
         { name: '价值198元手提迷你车在保温冷藏箱', color: '#f8d384' },
       ],
     }
+  },
+  mounted: function() {
+    console.log("mounted");
+    //var that = this;
+    //axios.post('/api'+'/TazBase/boot/hello')
+    axios.get('/api'+'/TazMobileOut/rs/detail/10005')
+    .then(function(response) {
+      console.log(response);
+      // var data = response.data;
+      // if(data.msg == "success"){
+      //   var obj = data.data;
+      //   console.log(obj);
+      // }
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
   },
   methods: {
     handleStart () {
